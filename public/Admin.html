@@ -1,0 +1,46 @@
+<html>
+<head>
+<!--Adding firebase to your app   -->
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+
+</head>
+
+
+<body>
+<form onsubmit="writeUserData()">
+First Name<input type="text" id="firstName"> <br>
+Last Name<input type="text" id="lastName"> <br>
+Age : <input type="text" id="age"> <br>
+
+<button type="submit" value="Submit">Submit </button>
+
+</form>
+</body>
+<script>
+// Initialize Firebase
+var config = {
+apiKey: "AIzaSyDxQ1c3-CPczcHwamg6oI63RNIQ1HaO7-8",
+authDomain: "myfirstproject-4598a.firebaseapp.com",
+databaseURL: "https://myfirstproject-4598a.firebaseio.com/",
+//storageBucket: "myfirstproject-4598a.appspot.com",
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+function writeUserData() {
+console.log('clicked');
+firstName = document.getElementById('firstName');
+lastName = document.getElementById('lastName');
+age = document.getElementById('age');
+
+database().ref('users').set({
+    username: firstName,
+    lastName: lastName,
+    age : age
+  });
+}
+
+
+</script>
+</html>
